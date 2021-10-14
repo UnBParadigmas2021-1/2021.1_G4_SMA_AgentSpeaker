@@ -62,20 +62,28 @@ if __name__ == '__main__':
     f = Filter()
     f.performative = ACLMessage.INFORM
     cenario = 1
+    port = int(argv[1]) 
 
     agents = list()
 
 
 
     remetente_agent = Remetente(AID(name='remetente'), f)
+    cortina_agent = AgenteCortina(AID(name='agtCortina'),f)
+    agente_fechar = AgenteCortinaFechada(AID(name='agtCortina2'),f)
+
     agents.append(remetente_agent)
 
-    if(cenario==1):
-        cortina_agent = AgenteCortina(AID(name='agtCortina'),f)
-        agents.append(cortina_agent)
-        cenario = cenario + 1
-    else:
-        agente_fechar = AgenteCortinaFechada(AID(name='agtCortina2'),f)
-        agents.append(agente_fechar)
+    numero_de_cenarios=3
+    port += 1
+
+    for i in range(numero_de_cenarios):
+        if(cenario==1):
+            agents.append(cortina_agent)
+            cortina_agent = AgenteCortina(AID(name=f'cortina_{i}@localhost:{port+i}'), f)
+            cenario = cenario + 1
+        else:
+            agente_fechar = AgenteCortinaFechada(AID(name=f'cortina_{i}@localhost:{port+i}'), f)
+            agents.append(agente_fechar)
 
     start_loop(agents)

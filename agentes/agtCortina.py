@@ -24,16 +24,9 @@ class AgenteCortina(Agent):
     
     def react(self, message):
         super(AgenteCortina, self).react(message)
-        #display_message(self.aid.localname, 'Mensagem Recebida')
         display_message(self.aid.localname, 'Mensagem recebida from {}'.format(message.sender.name))
-        #display_message(self.aid.localname, f'{message.content}')
-        display_message(self.aid.localname, 'abrindo cortinas')
+        display_message(self.aid.localname, 'Abrindo cortinas')
     
-        if self.f.filter(message):
-            display_message(self.aid.localname, 'chegou aki')
-            if f'{message.content}'.startswith("Ola"):
-                display_message(self.aid.localname, 'Ola Recebida')
-
 
 class AgenteCortinaFechada(Agent):
 
@@ -43,7 +36,6 @@ class AgenteCortinaFechada(Agent):
     
     def react(self, message):
         super(AgenteCortinaFechada, self).react(message)
-        #display_message(self.aid.localname, 'Mensagem Recebida')
         display_message(self.aid.localname, 'Mensagem recebida from {}'.format(message.sender.name))
         display_message(self.aid.localname, 'Fechando cortinas')
 
