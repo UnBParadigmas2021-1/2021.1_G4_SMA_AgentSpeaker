@@ -6,6 +6,8 @@ from pade.acl.aid import AID
 from random import randint
 from twisted.internet import reactor
 
+import time
+
 '''class AgenteCortina(Agent):
 
     def __init__(self, agent, message):
@@ -24,8 +26,9 @@ class AgenteCortina(Agent):
     
     def react(self, message):
         super(AgenteCortina, self).react(message)
-        display_message(self.aid.localname, 'Mensagem recebida from {}'.format(message.sender.name))
+        #display_message(self.aid.localname, 'Mensagem recebida from {}'.format(message.sender.name))
         display_message(self.aid.localname, 'Abrindo cortinas')
+        time.sleep(1)
     
 
 class AgenteCortinaFechada(Agent):
@@ -36,8 +39,9 @@ class AgenteCortinaFechada(Agent):
     
     def react(self, message):
         super(AgenteCortinaFechada, self).react(message)
-        display_message(self.aid.localname, 'Mensagem recebida from {}'.format(message.sender.name))
+        #display_message(self.aid.localname, 'Mensagem recebida from {}'.format(message.sender.name))
         display_message(self.aid.localname, 'Fechando cortinas')
+        time.sleep(1)
 
 
 ''' def react(self, message):
