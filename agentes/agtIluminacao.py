@@ -22,17 +22,18 @@ class AgenteIluminacao(Agent):
         super(AgenteIluminacao, self).__init__(aid=aid)
         self.f = f
     
-    def send_message(self, message_text):
+    def send_message(self, message_text, destino):
         message = ACLMessage(ACLMessage.INFORM)
-        message.add_receiver(AID('projetor'))
+        message.add_receiver(AID(destino))
         message.set_content(message_text)
         self.send(message)
+        display_message(self.aid.localname, message_text)
     
     def launch_subscriber_protocol(self):
         message = ACLMessage(ACLMessage.SUBSCRIBE)
         message.set_protocol(ACLMessage.FIPA_SUBSCRIBE_PROTOCOL)
         message.set_content(f'{self.aid.localname}')
-        message.add_receiver(AID('projetor'))
+        message.add_receiver(AID('iluminacao'))
         self.protocol = SubscriberProtocol(self, message)
         self.behaviours.append(self.protocol)
         self.protocol.on_start()
@@ -45,5 +46,8 @@ class AgenteIluminacao(Agent):
         super(AgenteIluminacao, self).react(message)
 
         if self.f.filter(message):
-            if f'{message.content}'.startswith("Preparando"):
-                display_message(self.agent.aid.localname, 'Oi')
+            if f'{message.content}'.startswith("Fechando"):
+                self.send_message("Apagando as luzes...", "sonorizacao")
+
+            if f'{message.content}'.startswith("Desligando"):
+                self.send_message("Ligando as luzes...", "cortina")

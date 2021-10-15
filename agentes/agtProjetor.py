@@ -1,8 +1,8 @@
-from sys import modules
-from pade.behaviours.protocols import FipaSubscribeProtocol, TimedBehaviour
-from pade.misc.utility import display_message
+from pade.behaviours.protocols import FipaSubscribeProtocol
+from pade.misc.utility import display_message, call_later
 from pade.acl.messages import ACLMessage, AID
 from pade.core.agent import Agent
+from printFilme import print_movie
 
 class PublisherProtocol(FipaSubscribeProtocol):
     def __init__(self, agent):
@@ -28,17 +28,29 @@ class AgenteProjetor(Agent):
         self.f = f
         self.protocol = PublisherProtocol(self)
         self.behaviours.append(self.protocol)
-    
-    def on_start(self, message):
+
+    def send_message(self, message_text, destino):
+        message = ACLMessage(ACLMessage.INFORM)
+        message.add_receiver(AID(destino))
+        message.set_content(message_text)
+        self.send(message)
+        display_message(self.aid.localname, message_text)
+
+    def on_start(self):
         super(AgenteProjetor,self).on_start()
-        message.set_content(f'Preparando para o filme')
-        self.notify(message)
+        display_message
+        call_later(8.0, self.send_message, "Preparando para começar o filme...", "cortina")
         
     
     def react(self, message):
         super(AgenteProjetor, self).react(message)
 
         if self.f.filter(message):
-            if f'{message.content}'.startswith("OI"):
-                message.set_content(f'Começando o filme')
-                self.notify(message)
+            if f'{message.content}'.startswith("Estabelecendo"):
+                display_message(self.aid.localname, "Começando o filme")
+                print_movie()
+                call_later(8.0, self.send_message, "Filme acabou :(", "sonorizacao")
+            
+            if f'{message.content}'.startswith("Abrindo"):
+                display_message(self.aid.localname, "Projetor desligado.")
+
