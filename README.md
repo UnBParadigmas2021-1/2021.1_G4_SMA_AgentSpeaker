@@ -29,13 +29,10 @@ educacionais](http://www.wesaac.c3.furg.br/storage/proceedings/cw88aA0ZdX4ahRYWl
 ## Screenshots
 
 <p align="center">
-<img alt="" title="" src="assets/print_1.jpg" width="200px" Height="240px">
+<img alt="" title="" src="assets/print_1.jpg" >
 <br>
-<img alt="" title="" src="assets/print_2.jpg" width="200px" Height="240px">
-
+<img alt="" title="" src="assets/print_2.jpg" >
 </p>
-
-![showcase](imagens/screenshot/unknown.png)
 
 ## Instalação
 
