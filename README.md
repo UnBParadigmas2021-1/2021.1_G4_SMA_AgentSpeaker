@@ -56,8 +56,10 @@ O projeto não possui entrada de dados apenas um cenário que foi definido previ
 ## Vídeo
 Um vídeo foi gravado demonstrando algumas partes do projeto pelos membros do grupo, o mesmo pode ser assistido abaixo:
 
-<!-- [![Vídeo do projeto](https://img.youtube.com/vi/NCiFX79jX50/0.jpg)](https://www.youtube.com/watch?v=NCiFX79jX50) -->
+[![Vídeo do projeto](https://img.youtube.com/vi/xiIIMKcNiHU/0.jpg)](https://www.youtube.com/watch?v=xiIIMKcNiHU)
 
 ## Fontes
 
 [PADE](https://pade.readthedocs.io/pt_BR/latest/)</br>
+[UnbParadigmas 2020-2 - SMA Leilão](https://github.com/UnBParadigmas2020-2/2020.2_G4_SMA_Leilao)</br>
+[Artigo AgentSpeak(L)](http://www.wesaac.c3.furg.br/storage/proceedings/cw88aA0ZdX4ahRYWlN46aLl7JMwk0OWyi2DfeVJQ.pdf)</br>
